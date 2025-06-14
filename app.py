@@ -23,8 +23,10 @@ def display_csv_help():
     - Plik musi zawierać dokładnie 2 kolumny
     - Pierwsza kolumna ZAWSZE oznacza współrzędną x, a druga y. Nazwy kolumn nie mają znaczenia
     - Wszystkie wartości muszą być liczbami
-    - Plik musi zawierać co najmniej 3 punkty
+    - Plik musi zawierać co najmniej 2 punkty
     - Nie mogą występować puste wartości
+    
+    Uwaga: Dla 2 punktów otoczka wypukła będzie odcinkiem.
     
     Przykłady poprawnych plików CSV:
     
@@ -33,14 +35,12 @@ def display_csv_help():
     x,y
     0,0
     2,2
-    4,0
     ```
     
     Bez nazw kolumn:
     ```csv
     0,0
     2,2
-    4,0
     ```
     """
     )
@@ -278,8 +278,8 @@ def validate_csv_structure(df):
         return False, errors
 
     # Sprawdzenie minimalnej liczby punktów
-    if len(df) < 3:
-        errors.append("Plik musi zawierać co najmniej 3 punkty")
+    if len(df) < 2:
+        errors.append("Plik musi zawierać co najmniej 2 punkty")
         return False, errors
 
     return True, []
